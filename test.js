@@ -96,7 +96,7 @@ describe('BitArray v' + info.version, function() {
     })
 
     it('#fromBuffer()', function() {
-      var buf = new Buffer([128, 144, 255])
+      var buf = Buffer.from([128, 144, 255])
       , bits = BitArray.fromBuffer(buf)
       ade(bits.toJSON(), [1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,1,1,1,1,1,1,1])
     })
@@ -153,7 +153,7 @@ describe('BitArray v' + info.version, function() {
     it('#bitcount()', function() {
       ase(BitArray.cardinality(144), 2)
       ase(BitArray.count(128), 1)
-      ase(BitArray.bitcount(new Buffer([255, 128])), 9)
+      ase(BitArray.bitcount(Buffer.from([255, 128])), 9)
       ase(BitArray.population([0,1,1,0,1,0]), 3)
     })
   })
@@ -232,7 +232,7 @@ describe('BitArray v' + info.version, function() {
     })
 
     it('#toString()', function() {
-      var bit = new BitArray(new Buffer([128, 144]))
+      var bit = new BitArray(Buffer.from([128, 144]))
       ase(bit.toString(), '0000100100000001')
       var bit2 = new BitArray(255)
       ase([bit2].join(''), '11111111')
@@ -241,7 +241,7 @@ describe('BitArray v' + info.version, function() {
     })
 
     it('#toJSON()', function() {
-      var bit = new BitArray(new Buffer([128, 144]))
+      var bit = new BitArray(Buffer.from([128, 144]))
       ade(bit.toJSON(), [1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0])
       ase(JSON.stringify(bit), '[1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0]')
       var bit2 = new BitArray(255)
@@ -251,7 +251,7 @@ describe('BitArray v' + info.version, function() {
     it('#valueOf()', function() {
       var bits = new BitArray('1001')
       ase(+bits, 9)
-      ase(new BitArray('011001') + new BitArray(new Buffer([255])), 280)
+      ase(new BitArray('011001') + new BitArray(Buffer.from([255])), 280)
 
       var bits = new BitArray().set([1, 0, 1, 1])
       ase(bits.toNumber(), 13)

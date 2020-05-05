@@ -294,7 +294,7 @@ BitArray.toBuffer = function(bits) {
     }
     buf.push(int32)
   }
-  return new Buffer(buf)
+  return Buffer.from(buf)
 }
 
 /**

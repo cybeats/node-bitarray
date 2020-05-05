@@ -150,7 +150,7 @@ Create a new instance from a node buffer instance
 **Aliases**: [`fromRedis`]
 
 ```js
-var buf = new Buffer([128, 144, 255])
+var buf = Buffer.from([128, 144, 255])
   , bits = BitArray.fromBuffer(buf)
 
 bits.toJSON() // [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]
@@ -278,7 +278,7 @@ Find the cardinality of a bit array, 32bit integer, or buffer of 32bit ints
 ```js
 BitArray.cardinality(144)              // 2
 BitArray.population(128)               // 1
-BitArray.count(new Buffer([255, 128])) // 9
+BitArray.count(Buffer.from([255, 128])) // 9
 BitArray.bitcount([0,1,1,0,1])         // 3
 ```
 
@@ -368,7 +368,7 @@ new BitArray(128).toJSON() // [1,0,0,0,0,0,0,0]
 Convert the current bit array to a node Buffer
 
 ```js
-new BitArray(new Buffer([128, 255])).toBuffer() // <Buffer 80 ff>
+new BitArray(Buffer.from([128, 255])).toBuffer() // <Buffer 80 ff>
 ```
 
 
@@ -377,7 +377,7 @@ new BitArray(new Buffer([128, 255])).toBuffer() // <Buffer 80 ff>
 Convert the current bit array to an offset array
 
 ```js
-new BitArray(new Buffer([128, 255])).toOffsets() // [0, 8, 9, 10, 11, 12, 13, 14, 15]
+new BitArray(Buffer.from([128, 255])).toOffsets() // [0, 8, 9, 10, 11, 12, 13, 14, 15]
 ```
 
 
